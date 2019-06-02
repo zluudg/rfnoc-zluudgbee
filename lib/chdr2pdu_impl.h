@@ -22,29 +22,45 @@
 #define INCLUDED_ZLUUDGBEE_CHDR2PDU_IMPL_H
 
 #include <zluudgbee/chdr2pdu.h>
-#include <zluudgbee/chdr2pdu_block_ctrl.hpp>
 #include <ettus/rfnoc_block_impl.h>
 
 namespace gr {
   namespace zluudgbee {
 
+    // enum vector_type { byte_t, float_t, complex_t }; // TODO verify that this is not needed
+   /*
+    * This class was largely based on the rfnoc_pdu_rx_impl class found in the gr-ettus package.
+    * Assume that everything in this class were copied from gr-ettus except where noted.
+    * Link: https://github.com/EttusResearch/GR-Ettus
+    */
     class chdr2pdu_impl : public chdr2pdu, public gr::ettus::rfnoc_block_impl
     {
-     private:
-      // Nothing to declare in this block.
-
      public:
       chdr2pdu_impl(
         const gr::ettus::device3::sptr &dev,
         const ::uhd::stream_args_t &tx_stream_args,
         const ::uhd::stream_args_t &rx_stream_args,
+        const std::string &block_name,
         const int block_select,
         const int device_select,
+        const int mtu,
         const bool enable_eob_on_stop
       );
+      bool start();
       ~chdr2pdu_impl();
 
-      // Where all the action really happens
+     private:
+      bool d_started;
+      bool d_finished;
+      std::vector<uint8_t> d_rxbuf;
+      gr::thread::thread d_thread;
+
+      pmt::pmt_t d_port;
+      basic_block *d_blk;
+
+      void run();
+      void start_rxthread(basic_block *blk, pmt::pmt_t rxport);
+      void stop_rxthread();
     };
 
   } // namespace zluudgbee

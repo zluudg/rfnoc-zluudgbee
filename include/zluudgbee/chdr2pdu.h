@@ -25,13 +25,16 @@
 #include <zluudgbee/api.h>
 #include <ettus/device3.h>
 #include <ettus/rfnoc_block.h>
-#include <uhd/stream.hpp>
+//#include <uhd/stream.hpp> // TODO verify that this is not needed
 
 namespace gr {
   namespace zluudgbee {
 
     /*!
-     * \brief <+description of block+>
+     * \brief Converts an incoming CHDR packet of 32-bit samples into
+     * a PDU. The PDU is represented by a PMT pair, one empty dict
+     * (no metadate/tags) and one uint8 vector where element 'n' is
+     * extracted from word 'n' in the incoming CHDR packet.
      * \ingroup zluudgbee
      *
      */
@@ -52,8 +55,10 @@ namespace gr {
         const gr::ettus::device3::sptr &dev,
         const ::uhd::stream_args_t &tx_stream_args,
         const ::uhd::stream_args_t &rx_stream_args,
+        const std::string &block_name,
         const int block_select=-1,
         const int device_select=-1,
+        const int mtu=2048,
         const bool enable_eob_on_stop=true
         );
     };
