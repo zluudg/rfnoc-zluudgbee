@@ -30,6 +30,7 @@ list(APPEND zluudgbee_sources
     zluudgbeeRX_block_ctrl_impl.cpp
     zluudgbeeCRC_impl.cc
     zluudgbeeCRC_block_ctrl_impl.cpp
+    chdr2pdu_impl.cc
 )
 
 
