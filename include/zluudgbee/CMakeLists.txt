@@ -22,5 +22,8 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/zluudgbee
+    zluudgbeeRX.h
+    zluudgbeeRX_block_ctrl.hpp
+    zluudgbeeCRC.h
+    zluudgbeeCRC_block_ctrl.hpp DESTINATION include/zluudgbee
 )

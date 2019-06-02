@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<nocblock>
+  <name>zluudgbeeCRC</name>
+  <blockname>zluudgbeeCRC</blockname>
+  <doc>
+    CRC16-CCITT checksum calculator. Can operate in both
+    RX mode and TX mode.
+    RX Mode: Last two bytes in AXIS burst are viewed as
+             the checksum and discarded upon success.
+    TX Mode: Last two bytes are viewed as padding and
+             will be replaced by the value calculated
+             over the N-2 preceeding bytes in an N-length
+             AXIS burst.
+  </doc>
+  <ids>
+    <id revision="0">50DA15BAD4B700D1</id>
+  </ids>
+  <registers>
+    <setreg>
+      <name>SR_CRC_MODE</name>
+      <address>150</address>
+    </setreg>
+  </registers>
+  <args>
+    <arg>
+      <name>crc_mode</name>
+      <type>int</type>
+      <value>0</value>
+      <check>EQUAL($crc_mode, 0) OR EQUAL($crc_mode, 1)</check>
+      <check_message>"Modes are: 0 (RX/check) or 1 (TX/generate)."</check_message>
+      <action>SR_WRITE("SR_CRC_MODE", $crc_mode)</action>
+    </arg>
+  </args>
+  <ports>
+    <sink>
+      <name>in</name>
+      <type>sc16</type>
+    </sink>
+    <source>
+      <name>out</name>
+      <type>sc16</type>
+    </source>
+  </ports>
+</nocblock>

@@ -1,2 +1,18 @@
 $(addprefix SOURCES_PATH, \
+noc_block_zluudgbeeCRC.v \
+noc_block_zluudgbeeRX.v \
+zluudg_atan.vhd \
+zluudg_constants.vhd \
+zluudg_crc16ccitt.vhd \
+zluudg_decimator.vhd \
+zluudg_demapper.vhd \
+zluudg_detector.vhd \
+zluudg_iir.vhd \
+zluudg_mult.vhd \
+zluudg_packager.vhd \
+zluudg_ppfifo.vhd \
+zluudg_ram.vhd \
+zluudg_receiver.vhd \
+zluudg_shifter.vhd \
+zluudg_symsync.vhd \
 ) \

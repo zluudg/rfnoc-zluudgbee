@@ -1,0 +1,2 @@
+add_subdirectory(noc_block_zluudgbeeRX_tb)
+add_subdirectory(noc_block_zluudgbeeCRC_tb)

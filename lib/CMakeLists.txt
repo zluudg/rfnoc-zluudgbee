@@ -26,6 +26,10 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND zluudgbee_sources
+    zluudgbeeRX_impl.cc
+    zluudgbeeRX_block_ctrl_impl.cpp
+    zluudgbeeCRC_impl.cc
+    zluudgbeeCRC_block_ctrl_impl.cpp
 )
 
 

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<nocblock>
+  <name>zluudgbeeRX</name>
+  <blockname>zluudgbeeRX</blockname>
+  <doc>
+    Block controller for an IEEE 802.15.4 2.4GHz OQPSK receiver.
+  </doc>
+  <ids>
+    <id revision="0">600DC0FFEE1571FE</id>
+  </ids>
+  <registers>
+    <setreg>
+      <name>SR_SYMSYNC_MODE</name>
+      <address>130</address>
+    </setreg>
+    <setreg>
+      <name>SR_SHIFT_THRESHOLD</name>
+      <address>131</address>
+    </setreg>
+    <setreg>
+      <name>SR_DECIM_RATE</name>
+      <address>132</address>
+    </setreg>
+    <setreg>
+      <name>SR_MA_LINE_DEPTH</name>
+      <address>133</address>
+    </setreg>
+    <setreg>
+      <name>SR_SHR_SENS</name>
+      <address>134</address>
+    </setreg>
+    <setreg>
+      <name>SR_CRAPPY_THRESHOLD</name>
+      <address>135</address>
+    </setreg>
+  </registers>
+  <args>
+    <arg>
+      <name>symsync_mode</name>
+      <type>int</type>
+      <value>0</value>
+      <check>GE($symsync_mode, 0) AND LE($symsync_mode, 2)</check>
+      <check_message>"Modes are: 0, 1 or 2."</check_message>
+      <action>SR_WRITE("SR_SYMSYNC_MODE", $symsync_mode)</action>
+    </arg>
+    <arg>
+      <name>shift_threshold</name>
+      <type>double</type>
+      <value>0.125</value>
+      <check>GE($shift_threshold, 0.0) AND LE($shift_threshold, 1.6)</check>
+      <check_message>"shift_threshold value must be within [0, 1.6]"</check_message>
+      <!-- User enters value between 0 and 1 and it gets rescaled to Q2.17, padding up to 32-bit -->
+      <action>SR_WRITE("SR_SHIFT_THRESHOLD", IROUND(MULT($shift_threshold, 131072.0)))</action>
+    </arg>
+    <arg>
+      <name>decim_rate</name>
+      <type>int</type>
+      <value>100</value>
+      <check>GE($decim_rate, 2) AND LE($decim_rate, 1024)</check>
+      <check_message>"decim_rate value must be within [2, 1024]"</check_message>
+      <action>SR_WRITE("SR_DECIM_RATE", $decim_rate)</action>
+    </arg>
+    <arg>
+      <name>ma_line_depth</name>
+      <type>int</type>
+      <value>8</value>
+      <check>EQUAL($ma_line_depth, 2) OR EQUAL($ma_line_depth, 4) OR EQUAL($ma_line_depth, 8) OR EQUAL($ma_line_depth, 16)</check>
+      <check_message>"ma_line_depth value must be one of the following: 2, 4, 8 or 16"</check_message>
+      <action>SR_WRITE("SR_MA_LINE_DEPTH", $ma_line_depth)</action>
+    </arg>
+    <arg>
+      <name>shr_sens</name>
+      <type>int</type>
+      <value>20</value>
+      <check>GE($shr_sens, 0) AND LE($shr_sens, 192)</check>
+      <check_message>"shr_sens value must be within [0, 192]"</check_message>
+      <action>SR_WRITE("SR_SHR_SENS", $shr_sens)</action>
+    </arg>
+    <arg>
+      <name>crappy_threshold</name>
+      <type>int</type>
+      <value>8</value>
+      <check>GE($crappy_threshold, 0) AND LE($crappy_threshold, 32)</check>
+      <check_message>"crappy_threshold value must be within [0, 32]"</check_message>
+      <action>SR_WRITE("SR_CRAPPY_THRESHOLD", $crappy_threshold)</action>
+    </arg>
+  </args>
+  <ports>
+    <sink>
+      <name>in</name>
+      <type>sc16</type>
+    </sink>
+    <source>
+      <name>out</name>
+      <type>sc16</type>
+    </source>
+  </ports>
+</nocblock>
