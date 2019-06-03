@@ -9,3 +9,9 @@ A hybrid PHY were the transmitter is implemented purely in software and the rece
 is implemented in the USRP's FPGA. The transmitter design was taken directly from
 https://github.com/bastibl/gr-ieee802-15-4, make sure to check it out. Also check out
 https://www.wime-project.net/, a huge inspiration for the receiver design.
+
+# zluudgbee\_transceiver.grc
+A simple transceiver that spams a 'Hello World!' frame for transmission while simultaneously
+receving any valid frames. Again, a lot of code was borrowed from
+https://github.com/bastibl/gr-ieee802-15-4. To use it, make sure that 'zluudgbee\_hybrid\_phy.grc'
+is built first, as it is used as an hierarchical block in this flowgraph.
