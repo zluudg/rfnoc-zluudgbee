@@ -193,7 +193,10 @@ namespace gr {
 
         if( result > 0 )
         {
-          // TODO properly process CHDR packet here
+          std::vector<uint8_t> bytebuf; // extract one byte from every word in d_rxbuf into bytebuf
+          for (int i = 0; i < result; i++) {
+            bytebuf.push_back((uint8_t) d_rxbuf[i*4+2]); // offset of two needed for some reason
+          }
           pmt::pmt_t vector = pmt::init_u8vector(result, &d_rxbuf[0]);
           pmt::pmt_t pdu = pmt::cons(pmt::PMT_NIL, vector);
           d_blk->message_port_pub(d_port, pdu);
