@@ -15,3 +15,10 @@ A simple transceiver that spams a 'Hello World!' frame for transmission while si
 receving any valid frames. Again, a lot of code was borrowed from
 https://github.com/bastibl/gr-ieee802-15-4. To use it, make sure that 'zluudgbee\_hybrid\_phy.grc'
 is built first, as it is used as an hierarchical block in this flowgraph.
+
+# zluudgbee\_X310\_RFNOC\_HG.bit
+An FPGA image containing 2x DDC, 2x DUC, 1x zluudgbeeRX, 1x zluudgbeeCRC and a bunch of FIFOs.
+Flashing a USRP x310 device with this image is needed in order to run the above flowgraphs.
+**IMPORTANT** The Vivado build process for this image ended with a small timing violation
+(-0.034ns). While this violation does not seem to affect the performance, it cannot be
+guaranteed that that is the case.
