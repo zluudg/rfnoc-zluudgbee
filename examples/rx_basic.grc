@@ -198,7 +198,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>./zluudgRX_dump.pcap</value>
+      <value>/tmp/zluudgRX_dump.pcap</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -537,7 +537,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>2</value>
+      <value>1</value>
     </param>
     <param>
       <key>fpga_module_name</key>
@@ -640,7 +640,7 @@
     </param>
     <param>
       <key>ma_line_depth</key>
-      <value>8</value>
+      <value>16</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -652,7 +652,7 @@
     </param>
     <param>
       <key>shr_sens</key>
-      <value>20</value>
+      <value>18</value>
     </param>
     <param>
       <key>shift_threshold</key>
