@@ -25,7 +25,7 @@
 #include <zluudgbee/api.h>
 #include <ettus/device3.h>
 #include <ettus/rfnoc_block.h>
-//#include <uhd/stream.hpp> // TODO verify that this is not needed
+#include <uhd/stream.hpp> // TODO verify whether this is needed
 
 namespace gr {
   namespace zluudgbee {

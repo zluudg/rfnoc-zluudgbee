@@ -27,7 +27,7 @@
 namespace gr {
   namespace zluudgbee {
 
-    // enum vector_type { byte_t, float_t, complex_t }; // TODO verify that this is not needed
+    enum vector_type { byte_t, float_t, complex_t }; // TODO verify whether this is needed
    /*
     * This class was largely based on the rfnoc_pdu_rx_impl class found in the gr-ettus package.
     * Assume that everything in this class were copied from gr-ettus except where noted.
