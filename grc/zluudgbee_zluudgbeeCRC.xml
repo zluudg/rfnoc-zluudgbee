@@ -68,6 +68,15 @@ self.$(id).set_arg("crc_mode", $crc_mode)
   </param>
 
   <param>
+    <name>Enable EOB on Stop</name>
+    <key>enable_eob_on_stop</key>
+    <value>True</value>
+    <type>bool</type>
+    <hide>#if $enable_eob_on_stop() == True then 'part' else 'none'#</hide>
+    <tab>RFNoC Config</tab>
+  </param>
+
+  <param>
     <name>FPGA Module Name</name>
     <key>fpga_module_name</key>
     <value>noc_block_zluudgCRC</value>
