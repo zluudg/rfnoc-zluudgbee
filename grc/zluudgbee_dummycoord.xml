@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<block>
+  <name>dummycoord</name>
+  <key>zluudgbee_dummycoord</key>
+  <category>[zluudgbee]</category>
+  <import>import zluudgbee</import>
+  <make>zluudgbee.dummycoord($pan, $src)</make>
+	<param>
+		<name>PAN</name>
+		<key>pan</key>
+		<value>0x1aaa</value>
+		<type>hex</type>
+	</param>
+	<param>
+		<name>Source Address</name>
+		<key>src</key>
+		<value>0x0001</value>
+		<type>hex</type>
+	</param>
+	<sink>
+		<name>pdu in</name>
+		<type>message</type>
+		<optional>0</optional>
+	</sink>
+	<source>
+		<name>pdu out</name>
+		<type>message</type>
+		<optional>0</optional>
+	</source>
+</block>

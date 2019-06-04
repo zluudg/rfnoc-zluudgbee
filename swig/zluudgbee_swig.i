@@ -18,6 +18,7 @@
 #include "zluudgbee/zluudgbeeRX.h"
 #include "zluudgbee/zluudgbeeCRC.h"
 #include "zluudgbee/chdr2pdu.h"
+#include "zluudgbee/dummycoord.h"
 %}
 
 %include "zluudgbee/zluudgbeeRX.h"
@@ -26,3 +27,5 @@ GR_SWIG_BLOCK_MAGIC2(zluudgbee, zluudgbeeRX);
 GR_SWIG_BLOCK_MAGIC2(zluudgbee, zluudgbeeCRC);
 %include "zluudgbee/chdr2pdu.h"
 GR_SWIG_BLOCK_MAGIC2(zluudgbee, chdr2pdu);
+%include "zluudgbee/dummycoord.h"
+GR_SWIG_BLOCK_MAGIC2(zluudgbee, dummycoord);

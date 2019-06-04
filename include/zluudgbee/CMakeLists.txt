@@ -26,5 +26,6 @@ install(FILES
     zluudgbeeRX_block_ctrl.hpp
     zluudgbeeCRC.h
     zluudgbeeCRC_block_ctrl.hpp
-    chdr2pdu.h DESTINATION include/zluudgbee
+    chdr2pdu.h
+    dummycoord.h DESTINATION include/zluudgbee
 )
