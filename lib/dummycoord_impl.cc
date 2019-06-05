@@ -138,15 +138,17 @@ private:
       // Pending address field, I have no idea what this field is for TODO find out
       beacon.push_back(0x00);
 
-      pub_output((const uint8_t*) &beacon, (int) beacon.size()); // TODO fix
+      pub_output(beacon);
     }
   }
 
-  void pub_output(const uint8_t* bytes, int size) { // TODO fix
-      pmt::pmt_t vector = pmt::init_u8vector(size, &bytes[0]);
-      uint16_t crc = crc16(pmt::blob_data(vector), pmt::blob_length(vector));
+  void pub_output(std::vector<uint8_t>& bytes) {
+      int len = (int) bytes.size();
+      uint16_t crc = crc16(&bytes[0], len);
       bytes.push_back(crc & 0xFF);
       bytes.push_back((crc >> 8) & 0xFF);
+      len = (int) bytes.size();
+      pmt::pmt_t vector = pmt::init_u8vector(len, &bytes[0]);
       pmt::pmt_t pdu = pmt::cons(pmt::make_dict(), vector);
       message_port_pub(pmt::mp("pdu out"), pdu);
   }
