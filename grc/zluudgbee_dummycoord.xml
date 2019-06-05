@@ -8,7 +8,7 @@
 	<param>
 		<name>PAN</name>
 		<key>pan</key>
-		<value>0x1aaa</value>
+		<value>0xabcd</value>
 		<type>hex</type>
 	</param>
 	<param>
