@@ -4,17 +4,29 @@
   <key>zluudgbee_dummycoord</key>
   <category>[zluudgbee]</category>
   <import>import zluudgbee</import>
-  <make>zluudgbee.dummycoord($pan, $src)</make>
+  <make>zluudgbee.dummycoord($pan_id, $src_addr, $short_addr_mode, $epid)</make>
 	<param>
-		<name>PAN</name>
-		<key>pan</key>
+		<name>Source PAN ID</name>
+		<key>pan_id</key>
 		<value>0xabcd</value>
 		<type>hex</type>
 	</param>
 	<param>
 		<name>Source Address</name>
-		<key>src</key>
-		<value>0x0001</value>
+		<key>src_addr</key>
+		<value>0x0000000000000001</value>
+		<type>hex</type>
+	</param>
+	<param>
+		<name>Short Addressing Mode</name>
+		<key>short_addr_mode</key>
+		<value>True</value>
+		<type>bool</type>
+	</param>
+	<param>
+		<name>Extended PAN ID</name>
+		<key>epid</key>
+		<value>0x000000000000000a</value>
 		<type>hex</type>
 	</param>
 	<sink>

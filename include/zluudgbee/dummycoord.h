@@ -46,7 +46,7 @@ namespace gr {
        * class. zluudgbee::dummycoord::make is the public interface for
        * creating new instances.
        */
-      static sptr make(int pan=0xABCD, int src=0x0001);
+      static sptr make(int pan_id=0xabcd, long src_addr=0x0000000000000001, bool short_addr_mode=true, long epid=0x000000000000000a);
     };
 
   } // namespace zluudgbee

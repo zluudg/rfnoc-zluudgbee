@@ -35,10 +35,12 @@ class dummycoord_impl : public dummycoord {
 
 public:
 
-  dummycoord_impl(int pan, int src) :
+  dummycoord_impl(int pan_id, long src_addr, bool short_addr_mode, long epid) :
     block("dummycoord", gr::io_signature::make(0, 0, 0), gr::io_signature::make(0, 0, 0)),
-    _pan(pan),
-    _src(src) {
+    _pan_id(pan_id),
+    _src_addr(src_addr),
+    _short_addr_mode(short_addr_mode),
+    _epid(epid) {
 
 	  message_port_register_in(pmt::mp("pdu in"));
 	  set_msg_handler(pmt::mp("pdu in"), boost::bind(&dummycoord_impl::handle_pdu, this, _1));
@@ -90,8 +92,10 @@ private:
   static const uint8_t BEACON_REQ_CMD = 0x07;
 
   char _macBsn = 1;
-  int _pan;
-  int _src;
+  int _pan_id;
+  long _src_addr;
+  bool _short_addr_mode;
+  long _epid;
 
   void handle_beacon_frame(pmt::pmt_t blob) {
     std::cout << "Beacon frame received! But no handler has been implemented..." << std::endl;
@@ -113,20 +117,24 @@ private:
 
     if (command_type = BEACON_REQ_CMD) {
       std::vector<uint8_t> beacon;
+      int short_addr_mode_lim = (_short_addr_mode) ? 2 : 8;
 
       // MHR field for beacons according to 802.15.4
       beacon.push_back(0x00);
-      beacon.push_back(0x00);
+      if (_short_addr_mode)
+        beacon.push_back(0x80); // Short addressing mode
+      else
+        beacon.push_back(0xc0); // Long addressing mode
 
       // Sequence number field according to 802.15.4
       beacon.push_back(_macBsn);
       _macBsn++;
 
       // Source addressing fields, no destination needed for beacons
-      beacon.push_back((uint8_t) _pan & 0xFF);
-      beacon.push_back((uint8_t) (_pan>>8) & 0xFF);
-      beacon.push_back((uint8_t) _src & 0xFF);
-      beacon.push_back((uint8_t) (_src>>8) & 0xFF);
+      beacon.push_back((uint8_t) _pan_id & 0xFF);
+      beacon.push_back((uint8_t) (_pan_id >> 8) & 0xFF);
+      for (int i=0; i<short_addr_mode_lim; i++)
+        beacon.push_back((uint8_t) (_src_addr >> i*8) & 0xFF);
 
       // Superframe specification, TODO look into purpose of Final CAP slot field
       beacon.push_back(0xFF); 
@@ -137,6 +145,19 @@ private:
 
       // Pending address field, I have no idea what this field is for TODO find out
       beacon.push_back(0x00);
+
+      // Zigbee specific beacon field
+      beacon.push_back(0x00); // protocol ID
+      beacon.push_back(0x20); // Stack profile TODO find out more
+      beacon.push_back(0x84); // Stack profile TODO find out more
+      for (int i=0; i<8; i++)
+        beacon.push_back((uint8_t) (_epid >> i*8) & 0xFF); // extended PAN ID
+
+      beacon.push_back(0xFF); // TX offset TODO find out more
+      beacon.push_back(0xFF); // TX offset TODO find out more
+      beacon.push_back(0xFF); // TX offset TODO find out more
+
+      beacon.push_back(0x00); // Update ID TODO find out more
 
       pub_output(beacon);
     }
@@ -173,7 +194,7 @@ private:
 
 };
 
-dummycoord::sptr dummycoord::make(int pan, int src) {
+dummycoord::sptr dummycoord::make(int pan_id, long src_addr, bool short_addr_mode, long epid) {
 
-  return gnuradio::get_initial_sptr (new dummycoord_impl(pan, src));
+  return gnuradio::get_initial_sptr (new dummycoord_impl(pan_id, src_addr, short_addr_mode, epid));
 }
