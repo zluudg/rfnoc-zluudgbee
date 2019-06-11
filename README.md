@@ -11,43 +11,14 @@ make
 sudo make install
 ```
 
-# Log
-1/6-2019:\
-Created OOT module.\
-UHD: rfnoc-devel, eec24d7b0442616fdbe9adf6b426959677e67f9\
-GNU Radio: maint-3.7, ???\
-gr-ettus: master, ???\
+# Dependencies
+| Repo                   | Branch      | Commit
+|------------------------|-------------|-----------------------------------------
+| ettusresearch/uhd      | rfnoc-devel | eec24d7b0442616fdbe9adf6b426959677e67f92
+| gnuradio/gnuradio      | maint-3.7   | 9e04b27bc4c96f95215b727ba3320812faa8d6aa
+| ettusresearch/gr-ettus | master      | e0d2b91866a2a8d35f4822629edc3c1eeed8585b
+| bastibl/gr-foo         | maint-3.7   | a2d8670313b846bc6aded3f123b02a960e59b4e6
+| bastibl/gr-ieee-15-4   | maint-3.7   | d3d94023c71af9e6d7721f7412fba88ff5325234
 
-2/6-2019:\
-Re-created OOT module and took note of current commits.\
-Added blocks 'zluudgbeeRX' and 'zluudgbeeCRC'.\
-UHD: rfnoc-devel,     eec24d7b0442616fdbe9adf6b426959677e67f92\
-GNU Radio: maint-3.7, 9e04b27bc4c96f95215b727ba3320812faa8d6aa\
-gr-ettus: master,     e0d2b91866a2a8d35f4822629edc3c1eeed8585b\
 
-3/6-2019:\
-Added 'chdr2pdu' block that enables RFNoC-\>Message passing.\
-~~zluudgCRC in RX mode seems buggy~~.\
-Added examples for a simple hybrid transceiver.
-UHD: rfnoc-devel,     eec24d7b0442616fdbe9adf6b426959677e67f92\
-GNU Radio: maint-3.7, 9e04b27bc4c96f95215b727ba3320812faa8d6aa\
-gr-ettus: master,     e0d2b91866a2a8d35f4822629edc3c1eeed8585b\
 
-4/6-2019:\
-Added a new and lighter FPGA image with no timing errors \
-Started writing a simple dummy mac for replying to beacon request\s
-UHD: rfnoc-devel,     eec24d7b0442616fdbe9adf6b426959677e67f92\
-GNU Radio: maint-3.7, 9e04b27bc4c96f95215b727ba3320812faa8d6aa\
-gr-ettus: master,     e0d2b91866a2a8d35f4822629edc3c1eeed8585b\
-
-5/6-2019:\
-Finalized dummy MAC for now. Replies to Beacon requests. \
-UHD: rfnoc-devel,     eec24d7b0442616fdbe9adf6b426959677e67f92\
-GNU Radio: maint-3.7, 9e04b27bc4c96f95215b727ba3320812faa8d6aa\
-gr-ettus: master,     e0d2b91866a2a8d35f4822629edc3c1eeed8585b\
-
-6/6-2019:\
-Made a copy of Bastibl's pure SW PHY to use for reference. \
-UHD: rfnoc-devel,     eec24d7b0442616fdbe9adf6b426959677e67f92\
-GNU Radio: maint-3.7, 9e04b27bc4c96f95215b727ba3320812faa8d6aa\
-gr-ettus: master,     e0d2b91866a2a8d35f4822629edc3c1eeed8585b\
