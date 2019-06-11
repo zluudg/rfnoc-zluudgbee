@@ -13,6 +13,10 @@ file. If zluudgCRC is enabled in the flowgraph everything will still work. Howev
 the CRC is expected to be present for .pcap-entry, Wireshark will point out that the checksum
 has failed.i
 
+# rx\_software.grc
+Same as the above but implemented in pure software by using the PHY blocks + CRC algorithm from
+the Wime project.
+
 # zluudgbee\_dummycoord\_hybrid.grc
 A simple transceiver acting as a "dummy coordinator". The operation is simple; if
 the received frame is a beacon request frame then it replies with a beacon. Uses
