@@ -32,6 +32,7 @@ list(APPEND zluudgbee_sources
     zluudgbeeCRC_block_ctrl_impl.cpp
     chdr2pdu_impl.cc
     dummycoord_impl.cc
+    softcrc_impl.cc
 )
 
 

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<block>
+  <name>softcrc</name>
+  <key>zluudgbee_softcrc</key>
+  <category>[zluudgbee]</category>
+  <import>import zluudgbee</import>
+  <make>zluudgbee.softcrc($rx_mode)</make>
+  <param>
+    <name>RX Mode</name>
+    <key>rx_mode</key>
+    <value>True</value>
+    <type>bool</type>
+    <option>
+      <name>Yes</name>
+      <key>True</key>
+    </option>
+    <option>
+      <name>No</name>
+      <key>False</key>
+    </option>
+  </param>
+
+  <sink>
+    <name>pdu in</name>
+    <type>message</type>
+    <optional>0</optional>
+  </sink>
+  <source>
+    <name>pdu out</name>
+    <type>message</type>
+    <optional>0</optional>
+  </source>
+</block>

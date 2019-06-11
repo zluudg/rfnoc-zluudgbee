@@ -346,7 +346,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(800, 376)</value>
+      <value>(968, 368)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -397,7 +397,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(544, 356)</value>
+      <value>(736, 476)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -464,7 +464,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(280, 620)</value>
+      <value>(248, 620)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -488,69 +488,6 @@
     </param>
   </block>
   <block>
-    <key>ieee802_15_4_mac</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>debug</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>dst</key>
-      <value>0xffff</value>
-    </param>
-    <param>
-      <key>dst_pan</key>
-      <value>0x1aaa</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>fcf</key>
-      <value>0x8841</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(472, 548)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>ieee802_15_4_mac_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>seq_nr</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>src</key>
-      <value>0x3344</value>
-    </param>
-  </block>
-  <block>
     <key>ieee802_15_4_packet_sink</key>
     <param>
       <key>alias</key>
@@ -570,7 +507,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(368, 388)</value>
+      <value>(592, 508)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -858,6 +795,49 @@
       <value></value>
     </param>
   </block>
+  <block>
+    <key>zluudgbee_softcrc</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(456, 508)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zluudgbee_softcrc_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>rx_mode</key>
+      <value>True</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>analog_quadrature_demod_cf_0</source_block_id>
     <sink_block_id>blocks_sub_xx_0</sink_block_id>
@@ -889,20 +869,8 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>ieee802_15_4_mac_0</source_block_id>
-    <sink_block_id>blocks_message_debug_0</sink_block_id>
-    <source_key>app out</source_key>
-    <sink_key>print_pdu</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>ieee802_15_4_mac_0</source_block_id>
-    <sink_block_id>foo_wireshark_connector_1</sink_block_id>
-    <source_key>app out</source_key>
-    <sink_key>in</sink_key>
-  </connection>
-  <connection>
     <source_block_id>ieee802_15_4_packet_sink_0</source_block_id>
-    <sink_block_id>ieee802_15_4_mac_0</sink_block_id>
+    <sink_block_id>zluudgbee_softcrc_0</sink_block_id>
     <source_key>out</source_key>
     <sink_key>pdu in</sink_key>
   </connection>
@@ -923,5 +891,17 @@
     <sink_block_id>uhd_rfnoc_streamer_ddc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zluudgbee_softcrc_0</source_block_id>
+    <sink_block_id>blocks_message_debug_0</sink_block_id>
+    <source_key>pdu out</source_key>
+    <sink_key>print_pdu</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zluudgbee_softcrc_0</source_block_id>
+    <sink_block_id>foo_wireshark_connector_1</sink_block_id>
+    <source_key>pdu out</source_key>
+    <sink_key>in</sink_key>
   </connection>
 </flow_graph>
