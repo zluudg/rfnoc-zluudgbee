@@ -144,7 +144,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>/tmp/zludgbee_transceiver.pcap</value>
+      <value>/tmp/frame_source.pcap</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -242,7 +242,7 @@
     </param>
     <param>
       <key>msg_len</key>
-      <value>64</value>
+      <value>5</value>
     </param>
     <param>
       <key>minoutbuf</key>
@@ -254,7 +254,7 @@
     </param>
     <param>
       <key>interval</key>
-      <value>500</value>
+      <value>20</value>
     </param>
     <param>
       <key>quit</key>
