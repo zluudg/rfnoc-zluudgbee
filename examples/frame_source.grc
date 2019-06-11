@@ -172,37 +172,6 @@
     </param>
   </block>
   <block>
-    <key>blocks_message_debug</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(872, 736)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blocks_message_debug_0</value>
-    </param>
-  </block>
-  <block>
     <key>foo_random_periodic_msg_source</key>
     <param>
       <key>alias</key>
@@ -242,7 +211,7 @@
     </param>
     <param>
       <key>msg_len</key>
-      <value>30</value>
+      <value>110</value>
     </param>
     <param>
       <key>minoutbuf</key>
@@ -431,7 +400,7 @@
     </param>
   </block>
   <block>
-    <key>zludgbee_hybrid_phy</key>
+    <key>zludgbee_software_phy</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -450,7 +419,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(536, 760)</value>
+      <value>(528, 720)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -458,7 +427,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>zludgbee_hybrid_phy_0</value>
+      <value>zludgbee_software_phy_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -495,7 +464,7 @@
   </connection>
   <connection>
     <source_block_id>ieee802_15_4_mac_0</source_block_id>
-    <sink_block_id>zludgbee_hybrid_phy_0</sink_block_id>
+    <sink_block_id>zludgbee_software_phy_0</sink_block_id>
     <source_key>pdu out</source_key>
     <sink_key>txin</sink_key>
   </connection>
@@ -504,11 +473,5 @@
     <sink_block_id>ieee802_15_4_mac_0</sink_block_id>
     <source_key>toMAC</source_key>
     <sink_key>app in</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>zludgbee_hybrid_phy_0</source_block_id>
-    <sink_block_id>blocks_message_debug_0</sink_block_id>
-    <source_key>rxout</source_key>
-    <sink_key>print</sink_key>
   </connection>
 </flow_graph>
